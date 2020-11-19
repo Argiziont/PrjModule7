@@ -12,9 +12,9 @@ namespace OrganizationOfEnterprise.Tests
         public void ToCompare_ReturnsInt_InputIsCorrect()
         {
             // Arrange
-            var unitOne = new Subdivision() { Name = "U1" };
-            var positionOne = new Position() { Subdivision = unitOne,PositionInCompany = PositionSystem.President};
-            var positionTwo = new Position() { Subdivision = unitOne, PositionInCompany = PositionSystem.GeneralManager };
+            var unitOne = new Subdivision {Name = "U1"};
+            var positionOne = new Position {Subdivision = unitOne, PositionInCompany = PositionSystem.President};
+            var positionTwo = new Position {Subdivision = unitOne, PositionInCompany = PositionSystem.GeneralManager};
 
             // Act
             var result = positionOne.ToCompare(positionTwo);
@@ -31,11 +31,14 @@ namespace OrganizationOfEnterprise.Tests
         public void ToCompare_ThrowsNotSupportedException_InputPositionIsNull()
         {
             // Arrange
-            var unitOne = new Subdivision() { Name = "U1" };
-            var positionOne = new Position() { Subdivision = unitOne, PositionInCompany = PositionSystem.President };
+            var unitOne = new Subdivision {Name = "U1"};
+            var positionOne = new Position {Subdivision = unitOne, PositionInCompany = PositionSystem.President};
 
             //Act
-            void Result() => positionOne.ToCompare(null);
+            void Result()
+            {
+                positionOne.ToCompare(null);
+            }
 
             // Assert
             Assert.Throws<ArgumentNullException>(Result);
@@ -49,11 +52,14 @@ namespace OrganizationOfEnterprise.Tests
         public void ToCompare_ThrowsNotSupportedException_InputPositionIsNotCorrectType()
         {
             // Arrange
-            var unitOne = new Subdivision() { Name = "U1" };
-            var positionOne = new Position() { Subdivision = unitOne, PositionInCompany = PositionSystem.President };
+            var unitOne = new Subdivision {Name = "U1"};
+            var positionOne = new Position {Subdivision = unitOne, PositionInCompany = PositionSystem.President};
 
             //Act
-            void Result() => positionOne.ToCompare(unitOne);
+            void Result()
+            {
+                positionOne.ToCompare(unitOne);
+            }
 
             // Assert
             Assert.Throws<NotSupportedException>(Result);

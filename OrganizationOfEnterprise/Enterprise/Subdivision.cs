@@ -13,11 +13,9 @@ namespace OrganizationOfEnterprise.Enterprise
         public string Name { get; init; }
         public Subdivision MainUnit { get; private set; }
 
-        [JsonIgnore]
-        public List<Subdivision> SubordinateUnits { get; } = new();
+        [JsonIgnore] public List<Subdivision> SubordinateUnits { get; } = new();
 
-        [JsonIgnore]
-        public List<Employee> Employees { get; } = new();
+        [JsonIgnore] public List<Employee> Employees { get; } = new();
 
         /// <summary>
         ///     Compares 2 Subdivisions
@@ -99,7 +97,6 @@ namespace OrganizationOfEnterprise.Enterprise
                 x.ToFire();
                 Employees.Remove(x);
                 return true;
-
             });
         }
 

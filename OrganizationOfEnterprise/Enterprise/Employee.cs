@@ -47,7 +47,7 @@ namespace OrganizationOfEnterprise.Enterprise
             }
 
             var comparableEmployee = (Employee) comparable;
-            if (comparableEmployee.Subdivision.Name != this.Subdivision.Name)
+            if (comparableEmployee.Subdivision.Name != Subdivision.Name)
                 throw new NotSupportedException(
                     "This employees are in different Subdivisions");
 

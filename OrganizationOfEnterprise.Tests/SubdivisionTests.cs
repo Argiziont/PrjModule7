@@ -13,9 +13,9 @@ namespace OrganizationOfEnterprise.Tests
         public void ToCompare_ReturnsInt_InputIsCorrect()
         {
             // Arrange
-            var unitOne = new Subdivision() { Name = "U1" };
-            var unitTwo = new Subdivision() { Name = "U2" };
-            var unitThree = new Subdivision() { Name = "U3" };
+            var unitOne = new Subdivision {Name = "U1"};
+            var unitTwo = new Subdivision {Name = "U2"};
+            var unitThree = new Subdivision {Name = "U3"};
 
             unitThree.AddSubordinateUnits(new List<Subdivision> {unitOne, unitTwo});
 
@@ -34,11 +34,14 @@ namespace OrganizationOfEnterprise.Tests
         public void ToCompare_ThrowsNotSupportedException_InputUnitsHaveDifferentSubdivisions()
         {
             // Arrange
-            var unitOne = new Subdivision() { Name = "U1" };
-            var unitTwo = new Subdivision() { Name = "U2" };
+            var unitOne = new Subdivision {Name = "U1"};
+            var unitTwo = new Subdivision {Name = "U2"};
 
             //Act
-            void Result() => unitOne.ToCompare(unitTwo);
+            void Result()
+            {
+                unitOne.ToCompare(unitTwo);
+            }
 
             // Assert
             Assert.Throws<NotSupportedException>(Result);
@@ -52,10 +55,13 @@ namespace OrganizationOfEnterprise.Tests
         public void ToCompare_ThrowsArgumentNullException_InputEmployeeIsNotCorrectType()
         {
             // Arrange
-            var unitOne = new Subdivision() { Name = "U1" };
+            var unitOne = new Subdivision {Name = "U1"};
 
             //Act
-            void Result() => unitOne.ToCompare(null);
+            void Result()
+            {
+                unitOne.ToCompare(null);
+            }
 
             // Assert
             Assert.Throws<ArgumentNullException>(Result);
@@ -69,9 +75,9 @@ namespace OrganizationOfEnterprise.Tests
         public void ToRecruitEmployee_Passes_InputIsCorrect()
         {
             // Arrange
-            var employeeOne = new Employee { Name = "Name1", Surname = "Surname1", LastName = "LastName1" };
+            var employeeOne = new Employee {Name = "Name1", Surname = "Surname1", LastName = "LastName1"};
 
-            var unitOne = new Subdivision() { Name = "U1" };
+            var unitOne = new Subdivision {Name = "U1"};
 
             // Act
             unitOne.ToRecruitEmployee(employeeOne, PositionSystem.President);
@@ -88,10 +94,13 @@ namespace OrganizationOfEnterprise.Tests
         public void ToRecruitEmployee_ThrowsArgumentNullException_InputEmployeeIsNull()
         {
             // Arrange
-            var unitOne = new Subdivision() { Name = "U1" };
+            var unitOne = new Subdivision {Name = "U1"};
 
             // Act
-            void Result()=>unitOne.ToRecruitEmployee(null, PositionSystem.President);
+            void Result()
+            {
+                unitOne.ToRecruitEmployee(null, PositionSystem.President);
+            }
 
             // Assert
             Assert.Throws<ArgumentNullException>(Result);
@@ -105,9 +114,9 @@ namespace OrganizationOfEnterprise.Tests
         public void ToFireEmployee_Passes_InputIsCorrect()
         {
             // Arrange
-            var employeeOne = new Employee { Name = "Name1", Surname = "Surname1", LastName = "LastName1" };
+            var employeeOne = new Employee {Name = "Name1", Surname = "Surname1", LastName = "LastName1"};
 
-            var unitOne = new Subdivision() { Name = "U1" };
+            var unitOne = new Subdivision {Name = "U1"};
 
             unitOne.ToRecruitEmployee(employeeOne, PositionSystem.President);
             // Act
@@ -125,10 +134,13 @@ namespace OrganizationOfEnterprise.Tests
         public void ToFireEmployee_ThrowsArgumentNullException_InputEmployeeIsNull()
         {
             // Arrange
-            var unitOne = new Subdivision() { Name = "U1" };
+            var unitOne = new Subdivision {Name = "U1"};
 
             // Act
-            void Result() => unitOne.ToFireEmployee(null, null,null);
+            void Result()
+            {
+                unitOne.ToFireEmployee(null, null, null);
+            }
 
             // Assert
             Assert.Throws<ArgumentNullException>(Result);
@@ -142,15 +154,18 @@ namespace OrganizationOfEnterprise.Tests
         public void ToFireEmployee_ThrowsKeyNotFoundException_InputEmployeeIsIncorrect()
         {
             // Arrange
-            var employeeOne = new Employee { Name = "Name1", Surname = "Surname1", LastName = "LastName1" };
-            var employeeTwo = new Employee { Name = "Name2", Surname = "Surname2", LastName = "LastName2" };
+            var employeeOne = new Employee {Name = "Name1", Surname = "Surname1", LastName = "LastName1"};
+            var employeeTwo = new Employee {Name = "Name2", Surname = "Surname2", LastName = "LastName2"};
 
-            var unitOne = new Subdivision() { Name = "U1" };
+            var unitOne = new Subdivision {Name = "U1"};
 
             unitOne.ToRecruitEmployee(employeeOne, PositionSystem.President);
 
             // Act
-            void Result() => unitOne.ToFireEmployee(employeeTwo.Name, employeeTwo.Surname, employeeTwo.LastName);
+            void Result()
+            {
+                unitOne.ToFireEmployee(employeeTwo.Name, employeeTwo.Surname, employeeTwo.LastName);
+            }
 
             // Assert
             Assert.Throws<KeyNotFoundException>(Result);
@@ -164,8 +179,8 @@ namespace OrganizationOfEnterprise.Tests
         public void AddMainUnit_Passes_InputIsCorrect()
         {
             // Arrange
-            var unitOne = new Subdivision() { Name = "U1" };
-            var unitTwo = new Subdivision() { Name = "U2" };
+            var unitOne = new Subdivision {Name = "U1"};
+            var unitTwo = new Subdivision {Name = "U2"};
 
             // Act
             unitOne.AddMainUnit(unitTwo);
@@ -182,10 +197,13 @@ namespace OrganizationOfEnterprise.Tests
         public void AddMainUnit_ThrowsArgumentNullException_InputIsNull()
         {
             // Arrange
-            var unitOne = new Subdivision() { Name = "U1" };
+            var unitOne = new Subdivision {Name = "U1"};
 
             // Act
-            void Result() => unitOne.AddMainUnit(null);
+            void Result()
+            {
+                unitOne.AddMainUnit(null);
+            }
 
             // Assert
             Assert.Throws<ArgumentNullException>(Result);
@@ -199,11 +217,11 @@ namespace OrganizationOfEnterprise.Tests
         public void AddSubordinateUnits_Passes_InputIsCorrect()
         {
             // Arrange
-            var unitOne = new Subdivision() { Name = "U1" };
-            var unitTwo = new Subdivision() { Name = "U2" };
+            var unitOne = new Subdivision {Name = "U1"};
+            var unitTwo = new Subdivision {Name = "U2"};
 
             // Act
-            unitOne.AddSubordinateUnits(new List<Subdivision>{ unitTwo});
+            unitOne.AddSubordinateUnits(new List<Subdivision> {unitTwo});
 
             // Assert
             Assert.Single(unitOne.SubordinateUnits);
@@ -217,10 +235,13 @@ namespace OrganizationOfEnterprise.Tests
         public void AddSubordinateUnits_ThrowsArgumentNullException_InputIsNull()
         {
             // Arrange
-            var unitOne = new Subdivision() { Name = "U1" };
+            var unitOne = new Subdivision {Name = "U1"};
 
             // Act
-            void Result() => unitOne.AddSubordinateUnits(null);
+            void Result()
+            {
+                unitOne.AddSubordinateUnits(null);
+            }
 
             // Assert
             Assert.Throws<ArgumentNullException>(Result);
